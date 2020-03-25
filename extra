@@ -27,3 +27,53 @@ Docker
 Next Topics
 //npm//
 
+JSON
+JavaScript Object Notation
+[
+    {
+        name:"John",
+        class:"UI"
+    },
+    {
+        name:"Ankit",
+        class:"Node"
+    }
+]
+
+package.JSON
+> Main / starting file
+> Version/packages/ description
+> packages
+> start/test/build
+
+/****************************
+Step to create package.JSON
+****************************/
+** You must have nodejs installed
+> Navigate to the folder where you want to generate with cmd/terminal
+> npm init
+> Answer all questions
+> type "yes"
+
+###> Local package
+###> Global package
+
+/****************************
+Step to install package
+****************************/
+> Navigate to the folder where you want to generate with cmd/terminal
+> npm i <packagename>/npm install <packagename>
+
+/****************************
+Step to  install global package
+****************************/
+** For creating/ testing or build
+#Window
+> Open your cmd as admin
+> npm i -g @aakashdeveloper/create-node-app
+
+##Mac/Linux
+> Open terminal
+> sudo npm i -g @aakashdeveloper/create-node-app
+
+npm i @babel/core --save-d
