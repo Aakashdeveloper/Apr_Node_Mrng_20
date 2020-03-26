@@ -1,6 +1,6 @@
 Basic JavaScript
----------------------------
 NPM
+--------------------------
 Basic NodeJS(in built)(Os,file,http)
 NodeJS(full Stack App) (Node-EJS-Mongo-Express)
 MongoDb Basic
@@ -25,7 +25,11 @@ Docker
 
 
 Next Topics
-//npm//
+//Basic npm package//
+//build api with fs//
+//making server with express//
+
+
 
 JSON
 JavaScript Object Notation
@@ -77,3 +81,9 @@ Step to  install global package
 > sudo npm i -g @aakashdeveloper/create-node-app
 
 npm i @babel/core --save-d
+
+
+/**********************
+Continuous development
+*************************/
+npm i -g nodemon
