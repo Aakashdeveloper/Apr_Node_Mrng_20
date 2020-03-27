@@ -1,7 +1,7 @@
 Basic JavaScript
 NPM
---------------------------
 Basic NodeJS(in built)(Os,file,http)
+--------------------------
 NodeJS(full Stack App) (Node-EJS-Mongo-Express)
 MongoDb Basic
 Third Party Api 
@@ -25,8 +25,6 @@ Docker
 
 
 Next Topics
-//Basic npm package//
-//build api with fs//
 //making server with express//
 
 
