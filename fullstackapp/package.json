@@ -1,0 +1,22 @@
+{
+  "name": "fullstackapp",
+  "version": "1.0.0",
+  "description": "this is fullstack with nodee",
+  "main": "index.js",
+  "scripts": {
+    "start": "node app.js",
+    "dev": "nodemon app.js"
+  },
+  "keywords": [
+    "node",
+    "ejs",
+    "express",
+    "mongo"
+  ],
+  "author": "nareshit",
+  "license": "ISC",
+  "dependencies": {
+    "ejs": "^3.0.2",
+    "express": "^4.17.1"
+  }
+}

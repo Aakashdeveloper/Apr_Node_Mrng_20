@@ -1,0 +1,142 @@
+var express = require('express');
+var app = express();
+var port = 8800;
+
+//Static file path
+app.use(express.static(__dirname+'/public'))
+//Html
+app.set('views', './src/views');
+//View Enginee
+app.set('view engine','ejs');
+
+
+var movies =[{
+    "_id": "5ab12612f36d2879268f284a",
+    "name": "Black Panther",
+    "language": "ENGLISH",
+    "rate": 4.5,
+    "type": "Action Adventure Fantasy",
+    "imageUrl": "https://image.ibb.co/f0hhZc/bp.jpg"
+  },
+  {
+    "_id": "5ab12666f36d2879268f2902",
+    "name": "Death Wish",
+    "language": "ENGLISH",
+    "type": "Action Crime Thriller",
+    "rate": 3.2,
+    "imageUrl": "https://image.ibb.co/gC9PfH/dw.jpg"
+  },
+  {
+    "_id": "5ab12678f36d2879268f291d",
+    "name": "Coco",
+    "language": "ENGLISH",
+    "type": "Adventure Animation Family",
+    "rate": 5,
+    "imageUrl": "https://image.ibb.co/dQwWSx/coco.jpg"
+  },
+  {
+    "_id": "5ab126b6f36d2879268f2943",
+    "name": "Avengers",
+    "language": "ENGLISH",
+    "type": "Actione",
+    "rate": 2,
+    "imageUrl": "https://www.hindustantimes.com/rf/image_size_960x540/HT/p2/2018/04/01/Pictures/_46a0b2c0-3590-11e8-8c5f-3c6cc031651e.jpg"
+  },
+  {
+    "_id": "5ab4e66b0c1d2b27846c6407",
+    "name": "Black Friday",
+    "language": "ENGLISH",
+    "rate": 4.5,
+    "type": "Action Adventure Fantasy",
+    "imageUrl": "https://image.ibb.co/f0hhZc/bp.jpg"
+  },
+  {
+    "_id": "5ab12686f36d2879268f2930",
+    "name": "Mission Impossible",
+    "language": "English",
+    "rate": 2.5,
+    "type": "Horror Thriller",
+    "imageUrl": "https://pre00.deviantart.net/5d3b/th/pre/f/2017/313/2/b/mission_impossible__dark_directive_teaser_poster_by_themadbutcher-dbt9wav.png"
+  },
+  {
+    "_id": "5ab12698f36d2879268f293e",
+    "name": "Incredibles 2",
+    "language": "ENGLISH",
+    "type": "Animated",
+    "rate": 4,
+    "imageUrl": "http://static1.squarespace.com/static/588a4776f5e23132a09d23b2/588a4e91be65945e50a36c0e/5b24084baa4a999c88a9f277/1529088827756/tre.jpg"
+  }]
+var products =[{
+    "_id": "5a05dacc734d1d68d42d31f3",
+    "productId": 1,
+    "productName": "Leaf Rake",
+    "productCode": "GDN-0011",
+    "releaseDate": "March 19, 2016",
+    "description": "Leaf rake with 48-inch wooden handle.",
+    "price": 19.95,
+    "starRating": 3.5,
+    "imageUrl": "http://openclipart.org/image/300px/svg_to_png/26215/Anonymous_Leaf_Rake.png"
+  },
+  {
+    "_id": "5a05daec734d1d68d42d32ca",
+    "productId": 2,
+    "productName": "Garden Cart",
+    "productCode": "GDN-0023",
+    "releaseDate": "March 18, 2016",
+    "description": "15 gallon capacity rolling garden cart",
+    "price": 32.99,
+    "starRating": 4.2,
+    "imageUrl": "http://openclipart.org/image/300px/svg_to_png/58471/garden_cart.png"
+  },
+  {
+    "_id": "5a05db08734d1d68d42d3300",
+    "productId": 3,
+    "productName": "Hammer",
+    "productCode": "TBX-0048",
+    "releaseDate": "May 21, 2016",
+    "description": "Curved claw steel hammer",
+    "price": 8.9,
+    "starRating": 4.8,
+    "imageUrl": "https://i.ibb.co/TrR7jkM/hammer.png"
+  },
+  {
+    "_id": "5a05db24734d1d68d42d3313",
+    "productId": 8,
+    "productName": "Saw",
+    "productCode": "TBX-0022",
+    "releaseDate": "May 15, 2016",
+    "description": "15-inch steel blade hand saw",
+    "price": 11.55,
+    "starRating": 3.7,
+    "imageUrl": "https://i.ibb.co/vmS3kRH/saw.png"
+  },
+  {
+    "_id": "5a05db3d734d1d68d42d3322",
+    "productId": 10,
+    "productName": "Video Game Controller",
+    "productCode": "GMG-0042",
+    "releaseDate": "October 15, 2015",
+    "description": "Standard two-button video game controller",
+    "price": 35.95,
+    "starRating": 4.6,
+    "imageUrl": "https://i.ibb.co/HD3RHMW/videogame.jpg"
+  }]
+
+app.get('/',(req,res) => {
+    //res.send("This is from express");
+    res.render('index',{title:'Home Page'});
+})
+
+app.get('/movies',(req,res) => {
+    //res.send(movies);
+    res.render('movies',{title:'Movies Page'});
+})
+
+app.get('/products',(req,res) => {
+    res.send(products);
+})
+
+app.listen(port,(err) => {
+    if(err) throw err;
+    console.log(`Server is running on port ${port}`)
+})

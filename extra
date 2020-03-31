@@ -85,3 +85,6 @@ npm i @babel/core --save-d
 Continuous development
 *************************/
 npm i -g nodemon
+
+CRUD 
+Create Read Update delete
