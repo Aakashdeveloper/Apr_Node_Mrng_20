@@ -1,14 +1,16 @@
 var express = require('express');
 var app = express();
 var port = 8800;
-var moviesRouter = require('./src/routes/moviesRoutes');
-var productRouter = require('./src/routes/productRoute');
+
 
 var navbar = [
     {name:'Home', path:'/'},
     {name:'Movies', path:'/movies'},
     {name:'Product', path:'/product'}
 ]
+
+var moviesRouter = require('./src/routes/moviesRoutes')(navbar);
+var productRouter = require('./src/routes/productRoute')(navbar);
 //Static file path
 app.use(express.static(__dirname+'/public'))
 //Html

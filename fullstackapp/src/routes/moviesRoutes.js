@@ -58,21 +58,21 @@ var movies =[{
     "imageUrl": "http://static1.squarespace.com/static/588a4776f5e23132a09d23b2/588a4e91be65945e50a36c0e/5b24084baa4a999c88a9f277/1529088827756/tre.jpg"
   }]
 
-var navbar = [
-    {name:'Home', path:'/'},
-    {name:'Movies', path:'/movies'},
-    {name:'Product', path:'/product'}
-]
-
-moviesRouter.route('/')
-  .get((req,res) => {
-  res.render('movies',{title:'Movies Page',movies,menu:navbar});
-});
-
-moviesRouter.route('/details')
-  .get((req,res) => {
-  res.render('moviesDetails',{title:'Movies Details Page',menu:navbar});
-});
 
 
-module.exports = moviesRouter;
+function router(menu){
+    moviesRouter.route('/')
+    .get((req,res) => {
+    res.render('movies',{title:'Movies Page',movies,menu:menu});
+    });
+
+    moviesRouter.route('/details')
+    .get((req,res) => {
+    res.render('moviesDetails',{title:'Movies Details Page',menu:menu});
+    });
+
+    return moviesRouter
+}
+
+
+module.exports = router;

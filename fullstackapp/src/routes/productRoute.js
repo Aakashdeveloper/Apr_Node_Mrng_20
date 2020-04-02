@@ -56,19 +56,20 @@ var products =[{
     "imageUrl": "https://i.ibb.co/HD3RHMW/videogame.jpg"
   }]
 
-var navbar = [
-    {name:'Home', path:'/'},
-    {name:'Movies', path:'/movies'},
-    {name:'Product', path:'/product'}
-]
-productRouter.route('/')
-  .get((req,res) => {
-      res.render('products',{title:'Product Page',menu:navbar});
-})
+function router(menu){
 
-productRouter.route('/details')
-  .get((req,res) => {
-      res.render('productDetails',{title:'Products Details Page',menu:navbar});
-});
+    productRouter.route('/')
+    .get((req,res) => {
+        res.render('products',{title:'Product Page',menu:menu});
+    })
 
-module.exports = productRouter;
+    productRouter.route('/details')
+    .get((req,res) => {
+        res.render('productDetails',{title:'Products Details Page',menu:menu});
+    });
+
+    return productRouter
+
+}
+
+module.exports = router;
