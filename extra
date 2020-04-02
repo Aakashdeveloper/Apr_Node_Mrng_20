@@ -90,3 +90,57 @@ npm i -g nodemon
 
 CRUD 
 Create Read Update delete
+
+
+////////////////
+NoSql
+
+Sno |  Hindi   | english
+1   | 80       |
+2   |          | 80
+
+[
+    {
+        sno:1,
+        hindi:80
+    },
+    {
+        sno:2,
+        english:80
+    },
+    {
+        sno:3,
+        english:80,
+        computer:80
+    }
+]
+Sql          NoSql
+Database     Database
+table        collections
+row          document
+
+
+
+Windows
+> C:\data\db
+> C:\Program\MongoDb\4.3\bin 
+> mongod 
+> mongo
+
+Mac
+>  sudo mkdir /System/Volumes/Data/data/db
+> sudo mongod --dbpath /System/Volumes/Data/data/db
+
+
+show dbs
+use classdatabase
+show collections
+
+db.movies.find()
+db.movies.find({rate:4.5,language:"ENGLISH"}).pretty()
+db.movies.find({rate:4.5},{name:1,type:1}).pretty()
+
+db.movies.find({$or:[rate:4.5,language:"ENGLISH"]},{name:1,type:1}).pretty()
+db.movies.find({rate:4.5},{name:1,type:1,_id:0}).pretty()
+
+db.movies.find({rate:4.5},{imageUrl:0,_id:0}).pretty()
