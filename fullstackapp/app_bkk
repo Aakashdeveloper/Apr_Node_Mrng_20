@@ -66,6 +66,8 @@ var movies =[{
     "rate": 4,
     "imageUrl": "http://static1.squarespace.com/static/588a4776f5e23132a09d23b2/588a4e91be65945e50a36c0e/5b24084baa4a999c88a9f277/1529088827756/tre.jpg"
   }]
+
+  
 var products =[{
     "_id": "5a05dacc734d1d68d42d31f3",
     "productId": 1,
