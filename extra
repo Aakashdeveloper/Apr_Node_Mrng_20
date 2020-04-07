@@ -3,9 +3,9 @@ NPM
 Basic NodeJS(in built)(Os,file,http)
 NodeJS(full Stack App) (Node-EJS-Mongo-Express)
 Third Party Api 
+Redis
 --------------------------
 MongoDb Basic
-Redis
 Email With Node
 Api with NodeJS(Rest)
 DashBoard(Crud)
@@ -210,3 +210,12 @@ api ==> current price
 request
 superagent
 axios
+
+
+/ =>param
+? =>queryParams
+
+Redis
+KEYS *
+get keyname
+set key value
