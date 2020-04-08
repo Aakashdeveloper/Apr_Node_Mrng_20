@@ -145,6 +145,9 @@ db.movies.find({rate:4.5},{name:1,type:1,_id:0}).pretty()
 
 db.movies.find({rate:4.5},{imageUrl:0,_id:0}).pretty()
 
+db.aprmrng.insert({"name":"John"})
+db.aprmrng.remove({})
+db.aprmrng.remove({"name":"John"})
 
 db.movies.insertMany([{
     "_id": "5ab12612f36d2879268f284a",
@@ -219,3 +222,16 @@ Redis
 KEYS *
 get keyname
 set key value
+
+> https://en.wikipedia.org/wiki/HATEOAS
+
+Rest
+CRUD
+Create  => Post
+Read    => Get
+Update  => Put
+Delete  => Delete
+
+
+npm i -g @aakashdeveloper/create-node-app
+generate 
