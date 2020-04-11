@@ -6,23 +6,13 @@ const MongoClient = mongo.MongoClient;
 const bodyParser = require('body-parser');
 const mongourl = "mongodb://localhost:27017";
 let db;
-let col_name = "aprmrng1";
+let col_name = "aprmrng";
 
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(bodyParser.json());
 
-app.use(express.static(__dirname+'/public'));
-app.set('views', './src/views');
-app.set('view engine', 'ejs');
-
 app.get('/',(req,res) => {
-    db.collection(col_name).find({isActive:true}).toArray((err,result) => {
-        if(err) throw err
-        else{
-            res.render('index',{data:result})
-        }
-    })
-  
+    res.status(200).send('Health Check')
 });
 
 app.get('/users/:id',(req,res) => {
@@ -37,12 +27,7 @@ app.get('/users/:id',(req,res) => {
     })
 })
 
-app.get('/new', (req,res) => {
-    var id = Math.floor(Math.random()*10000)
-    res.render('admin',{id:id})
-})
-
-app.get('/user',(req,res) =>{
+app.get('/users',(req,res) =>{
     var query = {};
     if(req.query.id){
         query={id:parseInt(req.query.id),isActive:true}
@@ -72,18 +57,11 @@ app.get('/user',(req,res) =>{
 
 //Insert
 app.post('/addUser',(req,res) => {
-    var data={
-        "id":parseInt(req.body.id),
-        "name": req.body.name,
-        "city": req.body.city,
-        "phone": req.body.phone,
-        "isActive":true
-    }
-    db.collection(col_name).insert(data,(err,result) => {
+    db.collection(col_name).insert(req.body,(err,result) => {
         if(err){
             throw err;
         }else{
-            res.redirect('/');
+            res.send('Data Added');
         }
     })
 })
@@ -93,11 +71,10 @@ app.put('/updateUser',(req,res) => {
     db.collection(col_name)
         .findOneAndUpdate({id:parseInt(req.body.id)},{
             $set:{
-                "id":parseInt(req.body.id),
-                "name": req.body.name,
-                "city": req.body.city,
-                "phone": req.body.phone,
-                "isActive":true
+                "id":req.body.id,
+                "name":req.body.name,
+                "class":req.body.id,
+                isActive:true
             }
         },(err,result) => {
             if(err){
