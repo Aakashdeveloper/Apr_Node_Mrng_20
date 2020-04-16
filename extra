@@ -17,7 +17,7 @@ GraphQl API
 Testing
 ChatApp
 ------
-Production
+Production Pm2
 -----------
 Nginx
 Docker
@@ -235,3 +235,4 @@ Delete  => Delete
 
 npm i -g @aakashdeveloper/create-node-app
 generate 
+
