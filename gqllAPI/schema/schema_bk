@@ -1,0 +1,108 @@
+const graphql = require('graphql');
+const _ = require('lodash');
+
+const{
+    GraphQLInt,
+    GraphQLObjectType,
+    GraphQLString,
+    GraphQLFloat,
+    GraphQLSchema
+}= graphql
+
+const products = [
+    {
+        "id": 6360,
+        "name": "Gulab",
+        "city": "Delhi",
+        "locality_verbose": "Pitampura, New Delhi",
+        "thumb": "https://b.zmtcdn.com/data/pictures/chains/3/6303/640252389ddc3f264dd0e9f2741e73cd.jpg",
+        "aggregate_rating": 4.2,
+        "rating_text": "Very Good"         
+    },
+    {
+        "id": 307406,
+        "name": "Pandit Ji Parantha Hut",
+        "locality": "Ashok Vihar Phase 2",
+        "city": "Delhi",
+        "thumb": "https://b.zmtcdn.com/data/pictures/5/19295175/231f0337cd9140f230d8208ddde923c9.jpg",
+        "aggregate_rating": 4.0,
+        "rating_text": "Very Good"        
+    },
+    {
+        "id": 2008,
+        "name": "Hira Sweets",
+        "locality": "Laxmi Nagar",
+        "city": "Delhi",
+        "thumb": "https://b.zmtcdn.com/data/reviews_photos/15b/d3faa48ac6382d15d60ca96b501dc15b_1570259732.jpg",
+        "aggregate_rating": 4.0,
+        "rating_text": "Very Good"                  
+    },
+    {
+        "id": 553,
+        "name": "Haldiram's",
+        "locality": "Lajpat Nagar 2",
+        "city": "Delhi",
+        "thumb": "https://b.zmtcdn.com/data/pictures/4/18932104/e90bb17c3b05e7a39251378389afe651.jpg",
+        "aggregate_rating": 4.1,
+        "rating_text": "Very Good"                  
+    },
+    {
+        "id": 18453961,
+        "name": "Food Adda",
+        "locality": "Borivali West",
+        "city": "Mumbai",
+        "thumb": "https://b.zmtcdn.com/data/pictures/7/18690357/0df7f4ca0c645a68a1657b1e69b015fa.jpg",
+        "aggregate_rating": 4.2,
+        "rating_text": "Very Good"               
+    },
+    {
+        "id": 35105,
+        "name": "McDonald's",
+        "locality": "Mira Road",
+        "city": "Mumbai",
+        "thumb": "https://b.zmtcdn.com/data/pictures/chains/9/35079/2be67efb4302119d103affa1c5f85ee0.jpg",
+        "aggregate_rating": 4.1,
+        "rating_text": "Very Good"                   
+    },
+    {
+        "id": 40853,
+        "name": "Hardeep Punjab",
+        "locality": "Sion",
+        "city": "Mumbai",
+        "thumb": "https://b.zmtcdn.com/data/pictures/3/40853/6575f9f7e5b67f8b43364fff733b898c.jpg?fit=around%7C200%3A200&crop=200%3A200%3B%2A%2C%2A",
+        "aggregate_rating": 4.4,
+        "rating_text": "Very Good"                  
+    }
+]
+
+const ProductType = new GraphQLObjectType({
+    name:'Product',
+    fields:{
+        id: {type:GraphQLInt},
+        name: {type:GraphQLString},
+        city: {type:GraphQLString},
+        locality_verbose:{type:GraphQLString},
+        thumb: {type:GraphQLString},
+        aggregate_rating: {type:GraphQLFloat},
+        rating_text: {type:GraphQLString},
+    }
+})
+
+const RootQuery = new GraphQLObjectType({
+    name:'RootQueryType',
+    fields:{
+        Product:{
+            type:ProductType,
+            args:{id:{type:GraphQLInt}},
+            resolve(parentValue, args){
+                return _.find(products,{id:args.id})
+            }
+        }
+    }
+})
+
+
+module.exports = new GraphQLSchema({
+    query:RootQuery
+})
+
