@@ -1,11 +1,9 @@
-const express = require('express');
+var express = require('express');
 const bodyParser = require('body-parser');
 const app = express();
-const cors = require('cors');
-const port = 2300;
+const port = 3100;
 
-app.use(cors())
-const Pool = require('pg').Pool;
+const Pool = require('pg').Pool
 const pool = new Pool({
     user:'postgres',
     host:'localhost',
@@ -14,28 +12,33 @@ const pool = new Pool({
     port:5432
 })
 
-app.get('/students',(req,res)=>{
-    pool.query('SELECT * FROM user',(err,result)=>{
+
+app.use(bodyParser.urlencoded({extended:false}));
+app.use(bodyParser.json());
+
+app.get('/user', (req,res) =>{
+    pool.query('SELECT city, phone, country FROM "user";', (err,result) => {
         if(err){
             throw err
         }else{
-            res.status(200).send(result)
+            res.status(200).json(result.rows)
         }
-    })
-})
+    });
+});
 
-app.post('/addstudents',(req,res)=>{
-    pool.query('INSERT INTO student (Class,RollNo,City) VALUES ($1,$2,$3)',['Node',1,'London'],(err,result)=>{
+app.post('/user',(req,res) => {
+    let city = req.body.city;
+    let phone = parseInt(req.body.phone);
+    let country = req.body.country;
+    pool.query('INSERT INTO "user"(city, phone, country) VALUES ($1, $2, $3);',[city,phone,country,], (err,result) => {
         if(err){
             throw err
-        }else{
-            res.status(200).send(result)
         }
+        res.status(200).send('data added')
     })
 })
 
 
-app.listen(port,(err) => {
-    console.log(`Server is running on port ${port}`)
+app.listen(port,() => {
+    console.log(`App running on port ${port}`)
 })
-

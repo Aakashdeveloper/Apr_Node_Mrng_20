@@ -6,7 +6,8 @@ const{
     GraphQLObjectType,
     GraphQLString,
     GraphQLFloat,
-    GraphQLSchema
+    GraphQLSchema,
+    GraphQLNonNull
 }= graphql
 
 const ProductType = new GraphQLObjectType({
@@ -36,8 +37,30 @@ const RootQuery = new GraphQLObjectType({
     }
 })
 
+const Mutation = new GraphQLObjectType({
+    name:"Mutation",
+    fields:{
+        addProduct:{
+            type:ProductType,
+            args:{
+                id: {type:new GraphQLNonNull(GraphQLInt)},
+                name: {type:GraphQLString},
+                city: {type:GraphQLString},
+                locality_verbose:{type:GraphQLString},
+                thumb: {type:GraphQLString},
+                aggregate_rating: {type:GraphQLFloat},
+                rating_text: {type:GraphQLString},
+            },
+            resolve(parentValue,{id,name,city}){
+                return axios.post(`http://localhost:8900/zomato/`,{id,name,city})
+                .then((res) => res.data)
+            }
+        }
+    }
+})
 
 module.exports = new GraphQLSchema({
-    query:RootQuery
+    query:RootQuery,
+    mutation: Mutation
 })
 
