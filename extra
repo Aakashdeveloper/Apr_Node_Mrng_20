@@ -16,19 +16,9 @@ GraphQl API
 Testing
 Production Pm2
 Nginx
-
---------------------------
 ChatApp
------------
 Docker
-
-
-
-Next Topics
-//managing route
-Start mongo
-//
-
+-----------------
 
 
 JSON
@@ -303,3 +293,13 @@ server {
     }
     include servers/*;
 }
+
+
+
+docker build . -t aprnode
+docker image ls
+docker run -p 8989:7899 aprnode
+
+
+docker pull aprnode
+docker run -p 8989:7899 aprnode
