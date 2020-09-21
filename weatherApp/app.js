@@ -5,6 +5,7 @@ const port = process.env.port||7899;
 
 const apiUrl= "http://api.openweathermap.org/data/2.5/forecast/daily?q=Helsinki&mode=json&units=metric&cnt=5&appid=fbf712a5a83d7305c3cda4ca8fe7ef29";
 
+
 app.use(express.static(__dirname+'/public'));
 app.set('views','./src/views');
 app.set('view engine','ejs');
